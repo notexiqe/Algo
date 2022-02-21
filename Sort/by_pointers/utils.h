@@ -2,7 +2,8 @@
 
 #define MSG_BUF_SIZE 256
 
-void phill_array_menu() {
+void phill_array_menu()
+{
 	printf("\t\tHow u want phill array?\n");
 	printf("\t1: phill array with rand();\n");
 	printf("\t2: read from file(Array size not specified);\n");
@@ -11,7 +12,8 @@ void phill_array_menu() {
 	return;
 }
 
-void sort_array_menu(int n) {
+void sort_array_menu(int n)
+{
 	n == 1 ? printf("\n\t\tArray was phill with rand();\n") : printf("\n\t\tArray was read from file;\n");
 	printf("\t\tHow to sort array?\n");
 	printf("\t\t1: Bubble sort\n");
@@ -28,76 +30,94 @@ void sort_array_menu(int n) {
 	return;
 }
 
-void array_print(int* a, int size) {
-	for (int i = 0; i < size; i++) {
+void array_print(int* a, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
 		printf("%d ", a[i]);
 	}
 	printf("\n");
 	return;
 }
 
-void phill_rand_array(int* a, int size) {
-	for (int i = 0; i < (size - 1); i++) {
+void phill_rand_array(int* a, int size)
+{
+	for (int i = 0; i < (size - 1); i++)
+	{
 		a[i] = rand() % 100;
 	}
 	return;
 }
 
-int array_find_size(FILE* f) {
+int array_find_size(FILE* f)
+{
 	int count = 0;
 	fseek(f, 0, SEEK_SET);
-	while (!feof(f)) {
+	while (!feof(f))
+	{
 		int value;
-		if (fscanf(f, "%d", &value) == 1) {
+		if (fscanf(f, "%d", &value) == 1)
+		{
 			count++;
 		}
 	}
 	return count;
 }
 
-void phill_file_array(FILE* f, int* a, int size) {
+void phill_file_array(FILE* f, int* a, int size)
+{
 	fseek(f, 0, SEEK_SET);
-	for (int i = 0; i < size; ++i) {
+	for (int i = 0; i < size; ++i)
+	{
 		fscanf(f, "%d", &a[i]);
 	}
 	return;
 }
 
-void phill_pArray(int* a, int** pa, int size) {
-	for (int i = 0; i < size; i++) {
+void phill_pArray(int* a, int** pa, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
 		pa[i] = &a[i];
 	}
 	printf("\n");
 	return;
 }
 
-void parray_print(int** p, int size) {
-	for (int i = 0; i < size; i++) {
+void parray_print(int** p, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
 		fprintf(stdout, "%d ", *p[i]);
 	}
 }
 
-void save_result(int** p, int size) {
+void save_result(int** p, int size)
+{
 	int i;
 	char check;
 	char filename[MSG_BUF_SIZE];
 	FILE* output;
 	printf("\n\t\tArray was sort.\n\t\tDo u wanna save results in file? Y/N ");
 	check = _getch();
-	if (check == 'Y' || check == 'y') {
+	if (check == 'Y' || check == 'y')
+	{
 		printf("\n\t\tEnter file name: ");
 		scanf("%s", &filename);
 		filename[strlen(filename)] = '\0';
-		if ((output = fopen(filename, "a")) == NULL) {
+		if ((output = fopen(filename, "a")) == NULL)
+		{
 			fprintf(stderr, "\n\t\tError in line %d: Cannot create/open file!\n", __LINE__);
 		}
-		for (i = 0; i < size; i++) {
+		for (i = 0; i < size; i++)
+		{
 			fprintf(output, "%d ", *p[i]);
 		}
 		fprintf(output, "\n");
 		fclose(output);
 	}
-	else {
+	else
+	{
 		printf("\n\t\tResult will not be saved ");
 		_getch();
 		return;
