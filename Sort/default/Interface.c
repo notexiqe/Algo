@@ -3,7 +3,7 @@
 
 #define MSG_BUF_SIZE 256
 
-void phill_array_menu()
+void PhillArrayMenu()
 {
 	printf("\t\tHow u want phill array?\n");
 	printf("\t1: phill array with rand();\n");
@@ -13,7 +13,7 @@ void phill_array_menu()
 	return;
 }
 
-void sort_array_menu(int n)
+void SortArrayMenu(int n)
 {
 	n == 1 ? printf("\n\t\tArray was phill with rand();\n") : printf("\n\t\tArray was read from file;\n");
 	printf("\t\tHow to sort array?\n");
@@ -31,7 +31,7 @@ void sort_array_menu(int n)
 	return;
 }
 
-void array_print(int* array, int size)
+void PrintArray(int* array, int size)
 {
 	for (int i = 0; i < size; i++)
 	{
@@ -41,7 +41,7 @@ void array_print(int* array, int size)
 	return;
 }
 
-void array_phill_rand(int* array, int size)
+void PhillRandArray(int* array, int size)
 {
 	for (int i = 0; i < size; i++)
 	{
@@ -50,7 +50,7 @@ void array_phill_rand(int* array, int size)
 	return;
 }
 
-int array_find_size(FILE* f)
+int FindArraySize(FILE* f)
 {
 	int count = 0;
 	fseek(f, 0, SEEK_SET);
@@ -65,7 +65,7 @@ int array_find_size(FILE* f)
 	return count;
 }
 
-void array_phill_file(FILE* f, int* array, int size)
+void PhillArrayFile(FILE* f, int* array, int size)
 {
 	fseek(f, 0, SEEK_SET);
 	for (int i = 0; i < size; ++i)
@@ -74,12 +74,13 @@ void array_phill_file(FILE* f, int* array, int size)
 	}
 }
 
-void save_result(int* a, int size)
+void SaveResult(int* a, int size)
 {
 	int i;
 	char check;
 	char filename[MSG_BUF_SIZE];
 	FILE* output;
+
 	printf("\n\t\tArray was sort.\n\t\tDo u wanna save results in file? Y/N ");
 	check = _getch();
 	if (check == 'Y' || check == 'y')

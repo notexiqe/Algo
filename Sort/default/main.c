@@ -10,9 +10,10 @@ int main()
 
 	int* gArray = NULL;
 	int  gArraySize = 0;
+
 	do
 	{
-		phill_array_menu();
+		PhillArrayMenu();
 		scanf("%d", &outerSwitchFlag);
 		switch (outerSwitchFlag)
 		{
@@ -21,58 +22,69 @@ int main()
 				srand((unsigned int)time(NULL));
 				printf("\n\t\tInput array size: ");
 				scanf("%u", &gArraySize);
-				if ((gArray = (int*)malloc(sizeof(int) * gArraySize)) == NULL)
+
+				gArray = (int*)malloc(sizeof(int) * gArraySize);
+				if (gArray == NULL)
 				{
 					fprintf(stderr, "Error in line %d: malloc return NULL in line;\n", __LINE__);
 					exit(1);
 				}
 
-				array_phill_rand(gArray, gArraySize);
+				PhillRandArray(gArray, gArraySize);
 				break;
 			}
-		case 2:
+
+			case 2:
 			{
-				FILE* input;
-				if ((input = fopen("input.txt", "r")) == NULL)
+				FILE* input = fopen("input.txt", "r");
+				if (input == NULL)
 				{
 					fprintf(stderr, "Error in line %d: file wasn't find!\n", __LINE__);
 					exit(2);
 				}
 
-				gArraySize = array_find_size(input);
-				if ((gArray = (int*)malloc(sizeof(int) * gArraySize)) == NULL)
+				gArraySize = FindArraySize(input);
+
+				gArray = (int*)malloc(sizeof(int) * gArraySize);
+				if (gArray == NULL)
 				{
 					fprintf(stderr, "Error in line %d: malloc return NULL in line;\n", __LINE__);
 					exit(1);
 				}
 
-				array_phill_file(input, gArray, gArraySize);
+				PhillArrayFile(input, gArray, gArraySize);
 				fclose(input);
 				break;
 			}
-		case 3:
+
+			case 3:
 			{
 				exit(0);
 			}
 		}
 
-		array_print(gArray, gArraySize);
-		sort_array_menu(outerSwitchFlag);
+		//printf("\n");
+		PrintArray(gArray, gArraySize);
+
+		SortArrayMenu(outerSwitchFlag);
+
 		scanf("%d", &innerSwitchFlag);
-		switch (innerSwitchFlag) {
-		case  1: { bubble_sort(gArray, gArraySize); break; }
-		case  2: { shaker_sort(gArray, gArraySize); break; }
-		case  3: { comb_sort(gArray, gArraySize); break;	}
-		case  4: { insert_sort(gArray, gArraySize); break; }
-		case  5: { shell_sort(gArray, gArraySize); break; }
-		case  6: { /*empty */ break;	}
-		case  7: { gnome_sort(gArray, gArraySize); break; }
-		case  8: { select_sort(gArray, gArraySize); break; }
-		case  9: { quicksort(gArray, gArraySize, 0, (gArraySize - 1)); break; }
-		case 10: { heap_sort(gArray, gArraySize); break; }
-		default: { exit(0);	}
+		switch (innerSwitchFlag)
+		{
+			case  1: { BubbleSort(gArray, gArraySize); break; }
+			case  2: { ShakerSort(gArray, gArraySize); break; }
+			case  3: { CombSort(gArray, gArraySize); break;	}
+			case  4: { InsertSort(gArray, gArraySize); break; }
+			case  5: { ShellSort(gArray, gArraySize); break; }
+			case  6: { /*empty */ break;	}
+			case  7: { GnomeSort(gArray, gArraySize); break; }
+			case  8: { SelectSort(gArray, gArraySize); break; }
+			case  9: { QuickSort(gArray, gArraySize, 0, (gArraySize - 1)); break; }
+			case 10: { HeapSort(gArray, gArraySize); break; }
+			default: { exit(0);	}
 		}
-		save_result(gArray, gArraySize);
+
+		SaveResult(gArray, gArraySize);
 
 		free(gArray);
 
