@@ -1,5 +1,5 @@
 #pragma once
-void bubble_sort(int** p, int size)
+void BubbleSort(int** p, int size)
 {
 	int i, j;
 
@@ -16,7 +16,7 @@ void bubble_sort(int** p, int size)
 	}
 }
 
-void bubble_sort_reverse(int** p, int size)
+void BubbleSortReverse(int** p, int size)
 {
 	int i, j;
 
@@ -34,7 +34,7 @@ void bubble_sort_reverse(int** p, int size)
 	}
 }
 
-void shaker_sort(int** p, int size)
+void ShakerSort(int** p, int size)
 {
 	int i, start = 0, end = size - 1;
 	char swap = 1;
@@ -71,7 +71,7 @@ void shaker_sort(int** p, int size)
 
 }
 
-int next_step_comb_sort(int step)
+int NextStepCombSort(int step)
 {
 	step = (step * 10) / 13;
 	if (step < 1)
@@ -81,14 +81,14 @@ int next_step_comb_sort(int step)
 	return step;
 }
 
-void comb_sort(int** p, int size)
+void CombSort(int** p, int size)
 {
 	int i, step = size;
 	char swap = 1;
 
 	while (step != 1 || swap)
 	{
-		step = next_step_comb_sort(step);
+		step = NextStepCombSort(step);
 		swap = 0;
 
 		for (i = 0; i < size - step; i++)
@@ -107,7 +107,7 @@ void comb_sort(int** p, int size)
 	}
 }
 
-void insert_sort(int** p, int size)
+void InsertSort(int** p, int size)
 {
 	int i, j;
 
@@ -122,7 +122,7 @@ void insert_sort(int** p, int size)
 	}
 }
 
-void shell_sort(int** p, int size)
+void ShellSort(int** p, int size)
 {
 	int i, j, step;
 
@@ -148,7 +148,7 @@ void shell_sort(int** p, int size)
 	}
 }
 
-void select_sort(int** p, int size)
+void SelectSort(int** p, int size)
 {
 	int i, j;
 
@@ -166,7 +166,7 @@ void select_sort(int** p, int size)
 	}
 }
 
-void gnome_sort(int** p, int size)
+void GnomeSort(int** p, int size)
 {
 	int i = 1, j = 2;
 
@@ -193,7 +193,7 @@ void gnome_sort(int** p, int size)
 	}
 }
 
-void quicksort(int** p, int size, int first, int last)
+void QuickSort(int** p, int size, int first, int last)
 {
 	int left = first,
 		right = last,
@@ -213,13 +213,13 @@ void quicksort(int** p, int size, int first, int last)
 		}
 	} while (left <= right);
 
-	if (first < right) quicksort(p, size, first, right);
-	if (last > left) quicksort(p, size, left, last);
+	if (first < right) QuickSort(p, size, first, right);
+	if (last > left) QuickSort(p, size, left, last);
 }
 
 //! heap sort
 
-void sift_down(int** p, int root, int bottom)
+void SiftDown(int** p, int root, int bottom)
 {
 	int max_child;
 	int done = 0;
@@ -252,19 +252,19 @@ void sift_down(int** p, int root, int bottom)
 	}
 }
 
-void heap_sort(int** p, int size)
+void HeapSort(int** p, int size)
 {
 	int i;
 
 	for (i = (size / 2); i >= 0; i--)
 	{
-		sift_down(p, i, size - 1);
+		SiftDown(p, i, size - 1);
 	}
 	for (i = size - 1; i >= 1; i--)
 	{
 		int* tmp = p[0];
 		p[0] = p[i];
 		p[i] = tmp;
-		sift_down(p, 0, i - 1);
+		SiftDown(p, 0, i - 1);
 	}
 }

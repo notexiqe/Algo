@@ -84,27 +84,27 @@ int main()
 		{
 			case  1:
 			{
-				bubble_sort(gpArray, gArraySize);
+				BubbleSort(gpArray, gArraySize);
 				break;
 			}
 			case  2:
 			{
-				shaker_sort(gpArray, gArraySize);
+				ShakerSort(gpArray, gArraySize);
 				break;
 			}
 			case  3:
 			{
-				comb_sort(gpArray, gArraySize);
+				CombSort(gpArray, gArraySize);
 				break;
 			}
 			case  4:
 			{
-				insert_sort(gpArray, gArraySize);
+				InsertSort(gpArray, gArraySize);
 				break;
 			}
 			case  5:
 			{
-				shell_sort(gpArray, gArraySize);
+				ShellSort(gpArray, gArraySize);
 				break;
 			}
 			case  6:
@@ -113,22 +113,22 @@ int main()
 			}
 			case  7:
 			{
-				gnome_sort(gpArray, gArraySize);
+				GnomeSort(gpArray, gArraySize);
 				break;
 			}
 			case  8:
 			{
-				select_sort(gpArray, gArraySize);
+				SelectSort(gpArray, gArraySize);
 				break;
 			}
 			case  9:
 			{
-				quicksort(gpArray, gArraySize, 0, (gArraySize - 1));
+				QuickSort(gpArray, gArraySize, 0, (gArraySize - 1));
 				break;
 			}
 			case 10:
 			{
-				heap_sort(gpArray, gArraySize);
+				HeapSort(gpArray, gArraySize);
 				break;
 			}
 			default:
